@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAidsTable extends Migration
+class CreateItemsMiscTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateAidsTable extends Migration
      */
     public function up()
     {
-        Schema::create('aid_items', function (Blueprint $table) {
+        Schema::create('items_misc', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('weight')->unsigned();
+            $table->integer('weight')->unsigned()->default(0);
             $table->integer('value')->unsigned();
-            $table->string('effect');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateAidsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aid_items');
+        Schema::dropIfExists('items_misc');
     }
 }
