@@ -19360,6 +19360,22 @@ $(".menu-bar li").on("click", function () {
   $(".menu-bar li").each(function () {
     $(this).removeClass("active");
   });
+  $(this).addClass("active"); // activate corresponding view panel
+
+  var val = $(this).attr("for");
+  $(".view-panel").each(function () {
+    $(this).removeClass("active");
+
+    if ($(this).attr("for") === val) {
+      $(this).addClass("active");
+    }
+  });
+}); // active state functionality for view panels
+
+$(".view-panel").on("click", function () {
+  $(".view-panel").each(function () {
+    $(this).removeClass("active");
+  });
   $(this).addClass("active");
 });
 

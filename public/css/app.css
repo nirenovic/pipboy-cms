@@ -20,8 +20,8 @@ body ul {
 }
 
 .pipboy-container .pipboy {
-  width: 1000px;
-  height: 640px;
+  width: 876px;
+  height: 700px;
   position: relative;
   z-index: 1;
   border-top-left-radius: 50% 20px;
@@ -62,22 +62,113 @@ body ul {
   background-size: 200%;
   background-position: 50% 50%;
   pointer-events: none;
-  opacity: 0.2;
+  opacity: 0.3;
+  -webkit-animation: flicker 5s linear 0s infinite normal forwards;
+          animation: flicker 5s linear 0s infinite normal forwards;
+}
+
+@-webkit-keyframes flicker {
+  from {
+    background-position: 50% 50%;
+  }
+
+  to {
+    background-position: 50% 53%;
+  }
+}
+
+@keyframes flicker {
+  from {
+    background-position: 50% 50%;
+  }
+
+  to {
+    background-position: 50% 53%;
+  }
 }
 
 .pipboy-container .pipboy .pipboy-screen {
   width: 100%;
   height: 100%;
-  border: 2px solid #06d43d;
+  border-bottom: 2px solid #06d43d;
 }
 
-.pipboy-container .pipboy .pipboy-screen .view-panel {
+.pipboy-container .pipboy .pipboy-screen .header-bar {
   display: grid;
-  grid-template-columns: 5fr 7fr;
-  padding: 60px;
+  grid-template-columns: 2.5fr 2.5fr 2.5fr 2fr 2.5fr;
 }
 
-.pipboy-container .pipboy .pipboy-screen .view-panel .item-list .item {
+.pipboy-container .pipboy .pipboy-screen .header-bar li {
+  display: inline-flex;
+  justify-content: space-between;
+  border-top: 2px solid #06d43d;
+  border-right: 2px solid #06d43d;
+  margin-left: 8px;
+  padding: 4px 8px;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.pipboy-container .pipboy .pipboy-screen .header-bar li:first-child {
+  position: relative;
+  border-right: none;
+  border-left: 2px solid #06d43d;
+}
+
+.pipboy-container .pipboy .pipboy-screen .header-bar li:first-child .panel-heading {
+  position: absolute;
+  top: -24px;
+  right: 0px;
+  padding: 0px 8px;
+  padding-left: 20px;
+  text-transform: uppercase;
+  font-size: 32px;
+  letter-spacing: 4px;
+  background-color: #08120b;
+}
+
+.pipboy-container .pipboy .pipboy-screen .header-bar li:nth-child(2) {
+  padding-left: 20px;
+}
+
+.pipboy-container .pipboy .pipboy-screen .view-panel-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel {
+  display: none;
+  width: 100%;
+  height: calc(100% - 90px);
+  max-height: calc(100% - 90px);
+  overflow: hidden;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  grid-template-columns: 5fr 7fr;
+  padding-top: 30px;
+  padding-bottom: 60px;
+}
+
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel.active {
+  display: grid;
+}
+
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel .item-list {
+  max-height: 100%;
+  padding-left: 20px;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel .item-list::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel .item-list .item {
   position: relative;
   margin-bottom: 2px;
   border: 2px solid transparent;
@@ -86,7 +177,7 @@ body ul {
   word-spacing: 4px;
 }
 
-.pipboy-container .pipboy .pipboy-screen .view-panel .item-list .item::before {
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel .item-list .item::before {
   content: "";
   display: block;
   position: absolute;
@@ -97,16 +188,16 @@ body ul {
   background: transparent;
 }
 
-.pipboy-container .pipboy .pipboy-screen .view-panel .item-list .item:hover,
-.pipboy-container .pipboy .pipboy-screen .view-panel .item-list .item.active {
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel .item-list .item:hover,
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel .item-list .item.active {
   background: rgba(6, 212, 61, 0.2);
 }
 
-.pipboy-container .pipboy .pipboy-screen .view-panel .item-list .item.active {
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel .item-list .item.active {
   border-color: #06d43d;
 }
 
-.pipboy-container .pipboy .pipboy-screen .view-panel .item-list .item.active::before {
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel .item-list .item.active::before {
   background: #06d43d;
 }
 
@@ -116,7 +207,7 @@ body ul {
   width: 100%;
   position: absolute;
   left: 0px;
-  bottom: 40px;
+  bottom: 42px;
   list-style: none;
   margin: 0px;
   padding: 0px;
