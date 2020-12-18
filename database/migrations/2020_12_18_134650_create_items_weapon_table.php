@@ -17,13 +17,13 @@ class CreateItemsWeaponTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('dmg');
-            $table->double('fire_rate', 8, 2);
+            $table->double('fire_rate', 8, 3);
             $table->double('crit_chance_multiplier', 8, 1)->default(1);
             $table->integer('crit_dmg')->unsigned();
             $table->integer('ap_cost')->unsigned()->default(30);
             $table->double('dmg_per_ap')->default(2);
             $table->double('spread', 8, 2)->nullable();
-            $table->integer('ammo_id')->unsigned()->nullable();
+            $table->string('ammo_type')->nullable();
             $table->integer('mag_size')->unsigned()->nullable();
             $table->integer('durability')->unsigned()->nullable();
             $table->integer('weight')->unsigned();

@@ -1,6 +1,9 @@
 require('./bootstrap');
 require('../../node_modules/jquery/dist/jquery.min.js');
 
+// initialise default item view panel
+$(".view-panel-container .view-panel").first().addClass('active');
+
 // active state functionality for item list items
 $(".item-list .item").on("click", function() {
     $(".item-list .item").each(function() {

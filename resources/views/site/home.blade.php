@@ -13,43 +13,54 @@
                     <li><span>Caps</span><span>115240</span></li>
                 </ul>
                 <div class="view-panel-container">
-                    <div class="view-panel active" for="weapons">
+                    @foreach($items as $item_type)
+                    <div class="view-panel" for="{{ $item_type->name }}">
                         <ul class="item-list">
-                            <li class="item"><span>.357 Magnum Revolver</span></li>
-                            <li class="item"><span>.44 Magnum Revolver</span></li>
-                            <li class="item"><span>10mm Submachine Gun</span></li>
-                            <li class="item"><span>12.7mm Submachine Gun</span></li>
-                            <li class="item"><span>Machete</span></li>     
+                            @foreach($item_type->items as $item)
+                            <li class="item"><span>{{ $item->name }}</span></li>
+                            @endforeach
                         </ul>
                     </div>
-                    <div class="view-panel" for="apparel">
+                    @endforeach
+                    <?php
+                    /*
+                    <div class="view-panel active" for="weapon_items">
                         <ul class="item-list">
-                            <li class="item"><span>Dirty Pre-War Businesswear</span></li>
-                            <li class="item"><span>Naughty Nightwear</span></li>
-                            <li class="item"><span>Shady Hat</span></li>
-                            <li class="item"><span>Tortiseshell Glasses</span></li>
-                            <li class="item"><span>Vault 101 Utility Jumpsuit</span></li>
+                            @foreach($weapon_items as $weapon_item)
+                            <li class="item"><span>{{ $weapon_item->name }}</span></li>
+                            @endforeach
                         </ul>
                     </div>
-                    <div class="view-panel" for="aid">
+                    <div class="view-panel" for="apparel_items">
                         <ul class="item-list">
-                            <li class="item"><span>Lad's Life</span></li>
-                            <li class="item"><span>Rad-X</span></li>
-                            <li class="item"><span>Radaway</span></li>
-                            <li class="item"><span>Radscorpion Meat</span></li>
-                            <li class="item"><span>Stimpak</span></li>
+                            @foreach($apparel_items as $apparel_item)
+                            <li class="item"><span>{{ $apparel_item->name }}</span></li>
+                            @endforeach
                         </ul>
                     </div>
-                    <div class="view-panel" for="misc">
+                    <div class="view-panel" for="aid_items">
                         <ul class="item-list">
-                            <li class="item"><span>Misc items here</span></li>
+                            @foreach($aid_items as $aid_item)
+                            <li class="item"><span>{{ $aid_item->name }}</span></li>
+                            @endforeach
                         </ul>
                     </div>
-                    <div class="view-panel" for="ammo">
+                    <div class="view-panel" for="misc_items">
                         <ul class="item-list">
-                            <li class="item"><span>Ammo items here</span></li>
+                            @foreach($misc_items as $misc_item)
+                            <li class="item"><span>{{ $misc_item->name }}</span></li>
+                            @endforeach
                         </ul>
                     </div>
+                    <div class="view-panel" for="ammo_items">
+                        <ul class="item-list">
+                            @foreach($ammo_items as $ammo_item)
+                            <li class="item"><span>{{ $ammo_item->name }}</span></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    */
+                    ?>
                 </div>
                 <ul class="menu-bar">
                     <li class="active" for="weapons"><span>Weapons</span></li>

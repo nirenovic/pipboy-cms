@@ -19346,8 +19346,10 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ../../node_modules/jquery/dist/jquery.min.js */ "./node_modules/jquery/dist/jquery.min.js"); // active state functionality for item list items
+__webpack_require__(/*! ../../node_modules/jquery/dist/jquery.min.js */ "./node_modules/jquery/dist/jquery.min.js"); // initialise default item view panel
 
+
+$(".view-panel-container .view-panel").first().addClass('active'); // active state functionality for item list items
 
 $(".item-list .item").on("click", function () {
   $(".item-list .item").each(function () {

@@ -16,7 +16,7 @@ class CreateItemsAmmoTable extends Migration
         Schema::create('items_ammo', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('weight')->unsigned();
+            $table->integer('weight')->unsigned()->default(0);
             $table->string('type')->nullable();
             $table->integer('value')->unsigned();
             $table->string('effect')->default("Damage x 1");
