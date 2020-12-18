@@ -15,6 +15,10 @@ class CreateAidsTable extends Migration
     {
         Schema::create('aid_items', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->integer('weight')->unsigned();
+            $table->integer('value')->unsigned();
+            $table->string('effect');
             $table->timestamps();
         });
     }
