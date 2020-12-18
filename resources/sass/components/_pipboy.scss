@@ -12,16 +12,99 @@
         width: 1000px;
         height: 640px;
         position: relative;
-        border-radius: 32px;
-        padding: 36px;
-        background-color: $pipboy-bg;
+        z-index: 1;
+        border-top-left-radius: 50% 20px;
+        border-top-right-radius: 50% 20px;
+        border-bottom-left-radius: 50% 20px;
+        border-bottom-right-radius: 50% 20px;
+        padding: 60px;
         color: $pipboy-fg;
+        user-select: none;
+        background-color: $pipboy-bg;
+
+        &::before 
+        {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 5;
+            box-shadow: inset 0px 0px 40px 20px black;
+            pointer-events: none;
+        }
+
+        .overlay
+        {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 5;
+            border-radius: inherit;
+            background-size: 200%;
+            background-position: 50% 50%;
+            pointer-events: none;
+            opacity: 0.2;
+        }
 
         .pipboy-screen
         {
             width: 100%;
             height: 100%;
             border: 2px solid $pipboy-fg;
+
+            .view-panel
+            {
+                display: grid;
+                grid-template-columns: 5fr 7fr;
+                padding: 60px;
+
+                .item-list
+                {
+                    .item 
+                    {
+                        position: relative;
+                        margin-bottom: 2px;
+                        border: 2px solid transparent;
+                        padding: 4px 24px;
+                        font-size: 20px;
+                        word-spacing: 4px;
+
+                        &::before 
+                        {
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            left: 8px;
+                            top: 14px;
+                            width: 8px;
+                            height: 8px;
+                            background: transparent;
+                        }
+                
+                        &:hover,
+                        &.active
+                        {
+                            background: $pipboy-fg-active;
+                        }
+                        
+                        &.active
+                        {
+                            border-color: $pipboy-fg;
+
+                            &::before 
+                            {
+                                background: $pipboy-fg;
+                            }
+                        }
+                    }
+                }
+            }
 
             ul.menu-bar
             {
@@ -30,7 +113,7 @@
                 width: 100%;
                 position: absolute;
                 left: 0px;
-                bottom: 18px;
+                bottom: 40px;
                 list-style: none;
                 margin: 0px;
                 padding: 0px;
@@ -43,9 +126,10 @@
                     padding: 0px 12px;
                     font-size: 24px;
                     text-align: center;
-                    cursor: pointer;
                     background-color: $pipboy-bg;
-                    
+                    background-size: cover;
+                    background-position: 50% 50%;
+
                     &::before 
                     {
                         content: "";
@@ -60,10 +144,15 @@
                     &:hover
                     {
                         border-color: $pipboy-fg;
+                    }
+                    
+                    &.active 
+                    {
+                        border-color: $pipboy-fg;
 
                         &::before 
                         {
-                            background-color: rgba($pipboy-fg, 0.2);
+                            background-color: $pipboy-fg-active;
                         }
                     }
                     
