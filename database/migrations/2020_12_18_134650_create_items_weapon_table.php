@@ -26,7 +26,7 @@ class CreateItemsWeaponTable extends Migration
             $table->string('ammo_type')->nullable();
             $table->integer('mag_size')->unsigned()->nullable();
             $table->integer('durability')->unsigned()->nullable();
-            $table->integer('weight')->unsigned();
+            $table->double('weight', 8, 2);
             $table->integer('value')->unsigned();
             $table->integer('skill_req')->unsigned()->default(0);
             $table->integer('str_req')->unsigned()->default(0);
