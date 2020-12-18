@@ -26,4 +26,9 @@ class Weapon extends Model
         'main_type',
         'sub_type',
     ];
+
+    public function items()
+    {
+        return $this->morphMany('App\Item', 'itemable');
+    }
 }

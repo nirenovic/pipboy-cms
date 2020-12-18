@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Apparel;
 
 class ItemsApparelSeeder extends Seeder
 {
@@ -21,5 +22,13 @@ class ItemsApparelSeeder extends Seeder
             'main_type' => 'clothing',
             'sub_type' => null,
         ]);
+        foreach(Apparel::all() as $apparel)
+        {
+            DB::table('items')->insert([
+                'itemable_id' => $apparel->id,
+                'itemable_type' => "apparel",
+                'item_name' => $apparel->name,
+            ]);
+        }
     }
 }

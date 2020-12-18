@@ -15,14 +15,16 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('item_id')->unsigned();
-            $table->enum('item_type', [
+            $table->integer('itemable_id')->unsigned();
+            // $table->string('itemable_type');
+            $table->enum('itemable_type', [
                 'weapon',
                 'apparel',
                 'aid',
                 'misc',
                 'ammo',
             ]);
+            $table->string('item_name');
             $table->timestamps();
         });
     }

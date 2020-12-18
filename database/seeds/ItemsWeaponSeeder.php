@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Weapon;
 
 class ItemsWeaponSeeder extends Seeder
 {
@@ -30,5 +31,13 @@ class ItemsWeaponSeeder extends Seeder
             'main_type' => 'gun',
             'sub_type' => 'pistol',
         ]);
+        foreach(Weapon::all() as $weapon)
+        {
+            DB::table('items')->insert([
+                'itemable_id' => $weapon->id,
+                'itemable_type' => "weapon",
+                'item_name' => $weapon->name,
+            ]);
+        }
     }
 }

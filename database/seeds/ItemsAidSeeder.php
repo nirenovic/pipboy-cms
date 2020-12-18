@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Aid;
 
 class ItemsAidSeeder extends Seeder
 {
@@ -17,5 +18,13 @@ class ItemsAidSeeder extends Seeder
             'value' => 4,
             'effect' => "+1 HP (5s), +3 Radiation",
         ]);
+        foreach(Aid::all() as $aid)
+        {
+            DB::table('items')->insert([
+                'itemable_id' => $aid->id,
+                'itemable_type' => "aid",
+                'item_name' => $aid->name,
+            ]);
+        }
     }
 }
