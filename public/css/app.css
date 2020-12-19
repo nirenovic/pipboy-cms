@@ -201,6 +201,55 @@ body ul {
   background: #06d43d;
 }
 
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel .item-details {
+  display: none;
+  width: 100%;
+  height: 100%;
+  padding-left: 8px;
+}
+
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel .item-details.active {
+  display: block;
+}
+
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel .item-details .item-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  background-color: rgba(6, 212, 61, 0.2);
+}
+
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel .item-details .item-image img {
+  display: block;
+  width: auto;
+  max-width: 80%;
+  height: auto;
+  max-height: 80%;
+  filter: opacity(0.7) sepia(1) hue-rotate(65deg) brightness(1) contrast(1.5);
+}
+
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel .item-details ul.item-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(3, -webkit-min-content) -webkit-max-content;
+  grid-template-rows: repeat(3, min-content) max-content;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+  row-gap: 8px;
+  padding-top: 8px;
+  height: 50%;
+}
+
+.pipboy-container .pipboy .pipboy-screen .view-panel-container .view-panel .item-details ul.item-stats li {
+  display: inline-flex;
+  justify-content: space-between;
+  border-top: 2px solid #06d43d;
+  border-right: 2px solid #06d43d;
+  padding: 0px 8px;
+  font-size: 20px;
+}
+
 .pipboy-container .pipboy .pipboy-screen ul.menu-bar {
   display: flex;
   justify-content: space-evenly;

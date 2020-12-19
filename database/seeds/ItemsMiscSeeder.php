@@ -13,9 +13,16 @@ class ItemsMiscSeeder extends Seeder
     public function run()
     {
         DB::table('items_misc')->insert([
-            'name' => '$5 NCR',
-            'weight' => 0,
-            'value' => 2,
+            [
+                'name' => '$5 NCR',
+                'weight' => 0,
+                'value' => 2,
+            ], 
+            [
+                'name' => 'Deathclaw hand',
+                'weight' => 1,
+                'value' => 75,
+            ],
         ]);
         foreach(Misc::all() as $misc)
         {

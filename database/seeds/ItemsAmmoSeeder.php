@@ -13,8 +13,14 @@ class ItemsAmmoSeeder extends Seeder
     public function run()
     {
         DB::table('items_ammo')->insert([
-            'name' => ".22LR round",
-            'value' => 1
+            [
+                'name' => '.22LR round',
+                'value' => 1
+            ], 
+            [
+                'name' => '.308 round',
+                'value' => 4,
+            ],
         ]);
         foreach(Ammo::all() as $ammo)
         {

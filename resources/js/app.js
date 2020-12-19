@@ -10,6 +10,14 @@ $(".item-list .item").on("click", function() {
         $(this).removeClass("active")
     });
     $(this).addClass("active");
+    var val = $(this).attr("item");
+    $('.item-details').each(function() {
+        $(this).removeClass("active");  
+        if($(this).attr("item") === val)
+        {
+            $(this).addClass("active");
+        }
+    });
 });
 
 // active state functionality for menu items
@@ -26,6 +34,10 @@ $(".menu-bar li").on("click", function() {
         {
             $(this).addClass("active");
         }
+    });
+    // deactivate previously active item details panel
+    $(".item-details").each(function () {
+        $(this).removeClass("active");
     });
 });
 
