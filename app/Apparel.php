@@ -9,6 +9,7 @@ class Apparel extends Model
     protected $table = "items_apparel";
     protected $fillable = [
         'name',
+        'qty',
         'dmg_threshold',
         'weight',
         'value',

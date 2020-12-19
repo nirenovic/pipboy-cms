@@ -16,6 +16,7 @@ class CreateItemsWeaponTable extends Migration
         Schema::create('items_weapon', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('qty')->unsigned()->default(1);
             $table->integer('dmg');
             $table->double('fire_rate', 8, 3);
             $table->double('crit_chance_multiplier', 8, 1)->default(1);

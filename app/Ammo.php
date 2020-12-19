@@ -9,6 +9,7 @@ class Ammo extends Model
     protected $table = "items_ammo";
     protected $fillable = [
         'name',
+        'qty',
         'weight',
         'type',
         'value',

@@ -9,6 +9,7 @@ class Weapon extends Model
     protected $table = "items_weapon";
     protected $fillable = [
         'name',
+        'qty',
         'dmg',
         'fire_rate',
         'crit_chance_multiplier',

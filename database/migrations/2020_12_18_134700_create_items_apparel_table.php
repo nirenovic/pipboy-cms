@@ -16,6 +16,7 @@ class CreateItemsApparelTable extends Migration
         Schema::create('items_apparel', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('qty')->unsigned()->default(1);
             $table->integer('dmg_threshold')->unsigned()->default(0);
             $table->integer('weight')->unsigned();
             $table->integer('value')->unsigned()->default(0);

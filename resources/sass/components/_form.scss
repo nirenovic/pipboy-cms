@@ -1,0 +1,40 @@
+forms
+{
+    .form-group
+    {
+        margin-bottom: 16px;
+
+        label
+        {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: normal;
+            letter-spacing: 1px;    
+            color: $terminal-fg;
+            text-shadow: 0px 0px 3px $terminal-glow;
+        }
+    
+        input,
+        input[type="text"],
+        input[type="number"]
+        {
+            border: none;
+            padding: 8px;
+            background: $pipboy-fg-active;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: $terminal-fg;
+            letter-spacing: 1px;
+            text-shadow: 0px 0px 4px $terminal-glow;
+    
+            &:focus 
+            {
+                outline: none;
+            }
+        }
+    }
+}
