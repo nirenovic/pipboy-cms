@@ -1,8 +1,8 @@
 @extends('layouts.site')
 @section('content')
 <div class="page-content">
-    <div class="pipboy-container">
-        <div class="pipboy" style="cursor: url('{{ asset('img/cursor.cur') }}'), auto;">
+    <div class="pipboy-container" style="cursor: url('{{ asset('img/cursor.cur') }}'), auto;">
+        <div class="pipboy">
             <div class="overlay" style="background-image: url('{{ asset('img/scanlines.png') }}');"></div>
             <div class="pipboy-screen">
                 <ul class="header-bar">
