@@ -17,8 +17,8 @@
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
             crossorigin="anonymous"></script>
     </head>
-    <body>
+    <body style="cursor: url('{{ asset('img/cursor.cur') }}'), auto;">
     @yield('content')
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script defer src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

@@ -43,6 +43,12 @@ body ul {
   background-color: #08120b;
 }
 
+.pipboy-container .pipboy.blurred,
+.terminal-container .pipboy.blurred,
+.terminal-container .blurred.terminal-screen {
+  filter: blur(4px);
+}
+
 .pipboy-container .pipboy::before,
 .terminal-container .pipboy::before,
 .terminal-container .terminal-screen::before {
@@ -436,6 +442,56 @@ forms .form-group input[type=number]:focus {
 
 .terminal-container .terminal-screen::before {
   box-shadow: inset 0px 0px 80px 40px #000;
+}
+
+.pop-up-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  background: rgba(8, 18, 11, 0.5);
+  filter: blur(100);
+}
+
+.pop-up-container.clicked {
+  display: none;
+}
+
+.pop-up-container .pop-up {
+  border: 2px solid #06d43d;
+  padding: 40px;
+  background: #073914;
+  font-size: 20px;
+  font-family: "PT Sans Narrow", sans-serif;
+  color: #06d43d;
+  opacity: 0.8;
+}
+
+.pop-up-container .pop-up button {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  border: 1px solid #06d43d;
+  padding: 8px 16px;
+  padding-top: 10px;
+  background: transparent;
+  font-weight: bold;
+  color: inherit;
+  cursor: inherit;
+}
+
+.pop-up-container .pop-up button:focus {
+  outline: none;
+}
+
+.pop-up-container .pop-up button:hover {
+  background: #06d43d;
+  color: #073914;
 }
 
 .login-content {

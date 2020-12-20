@@ -1,0 +1,55 @@
+.pop-up-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    background: rgba($pipboy-bg, 0.5);
+    filter: blur(100);
+
+    &.clicked
+    {
+        display: none;
+    }
+
+    .pop-up
+    {
+        border: 2px solid $pipboy-fg;
+        padding: 40px;
+        background: $pipboy-fg-active;
+        font-size: 20px;
+        font-family: 'PT Sans Narrow', sans-serif;
+        color: $pipboy-fg;
+        opacity: 0.8;
+
+        button 
+        {
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            border: 1px solid $pipboy-fg;
+            padding: 8px 16px;
+            padding-top: 10px;
+            background: transparent;
+            font-weight: bold;
+            color: inherit;
+            cursor: inherit;
+
+            &:focus 
+            {
+                outline: none;
+            }
+            
+            &:hover 
+            {
+                background: $pipboy-fg;
+                color: $pipboy-fg-active;
+            }
+        }
+    }
+}

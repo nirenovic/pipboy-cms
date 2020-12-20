@@ -1,3 +1,5 @@
+const { ready } = require('jquery');
+
 require('./bootstrap');
 require('../../node_modules/jquery/dist/jquery.min.js');
 
@@ -16,6 +18,8 @@ $(".item-list .item").on("click", function() {
         if($(this).attr("item") === val)
         {
             $(this).addClass("active");
+            $("#ui-ok").prop("volume", 0.1);
+            $("#ui-ok")[0].play();
         }
     });
 });
@@ -33,6 +37,8 @@ $(".menu-bar li").on("click", function() {
         if($(this).attr("for") === val)
         {
             $(this).addClass("active");
+            $("#ui-tab").prop("volume", 0.05);
+            $("#ui-tab")[0].play();
         }
     });
     // deactivate previously active item details panel
@@ -47,4 +53,20 @@ $(".view-panel").on("click", function() {
         $(this).removeClass("active");
     });
     $(this).addClass("active");
+});
+
+$(document).ready(function() {
+    $(".pop-up button").on("click", function() {
+        $(".pop-up-container").addClass("clicked");
+        $(".pipboy").removeClass("blurred");
+        $("#ui-static").prop("volume", 0.5);
+        $("#ui-static")[0].play();
+    });
+    $(".item-list .item, .menu-bar li").on("mouseenter", function() {
+        if(!$(this).hasClass("active"))
+        {
+            $("#ui-focus").prop("volume", 0.1);
+            $("#ui-focus")[0].play();
+        }
+    });
 });

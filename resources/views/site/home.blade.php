@@ -1,8 +1,14 @@
 @extends('layouts.site')
 @section('content')
 <div class="page-content">
-    <div class="pipboy-container" style="cursor: url('{{ asset('img/cursor.cur') }}'), auto;">
-        <div class="pipboy">
+    <div class="pop-up-container">
+        <div class="pop-up">
+            <span>Hey! Welcome to my little pipboy web app. Enjoy!</span>
+            <button>OK!</button>
+        </div>
+    </div>
+    <div class="pipboy-container">
+        <div class="pipboy blurred">
             <div class="overlay" style="background-image: url('{{ asset('img/scanlines.png') }}');"></div>
             <div class="pipboy-screen">
                 <ul class="header-bar">
@@ -81,5 +87,21 @@
             </div>
         </div>
     <div>
+    {{-- audio --}}
+    <audio id="ui-static">
+        <source src="{{ asset('sounds/pipboy/static/ui_static_d_02.wav') }}" type="audio/wav">
+    </audio>
+    <audio id="ui-focus">
+        <source src="{{ asset('sounds/pipboy/ui/ui_menu_focus.wav') }}" type="audio/wav">
+    </audio>
+    <audio id="ui-ok">
+        <source src="{{ asset('sounds/pipboy/ui/ui_menu_ok.wav') }}" type="audio/wav">
+    </audio>
+    <audio id="ui-tab">
+        <source src="{{ asset('sounds/pipboy/ui/ui_pipboy_tab.wav') }}" type="audio/wav">
+    </audio>
+    <audio id="ui-hum">
+        <source src="{{ asset('sounds/pipboy/ui_pipboy_hum_lp.wav') }}" type="audio/wav">
+    </audio>
 </div>
 @endsection
