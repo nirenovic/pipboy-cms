@@ -30286,7 +30286,7 @@ $(".view-panel").on("click", function () {
 $(document).ready(function () {
   $(".pop-up button").on("click", function () {
     $(".pop-up-container").addClass("clicked");
-    $(".pipboy").removeClass("blurred");
+    $(".pipboy").addClass("on");
     $("#ui-static").prop("volume", 0.5);
     $("#ui-static")[0].play();
   });

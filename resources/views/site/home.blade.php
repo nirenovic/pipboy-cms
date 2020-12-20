@@ -3,12 +3,12 @@
 <div class="page-content">
     <div class="pop-up-container">
         <div class="pop-up">
-            <span>Hey! Welcome to my little pipboy web app. Enjoy!</span>
-            <button>OK!</button>
+            <span>Welcome to my pipboy web app.</span>
+            <button>Start</button>
         </div>
     </div>
     <div class="pipboy-container">
-        <div class="pipboy blurred">
+        <div class="pipboy">
             <div class="overlay" style="background-image: url('{{ asset('img/scanlines.png') }}');"></div>
             <div class="pipboy-screen">
                 <ul class="header-bar">
@@ -23,7 +23,14 @@
                     <div class="view-panel" for="{{ $item_type->name }}">
                         <ul class="item-list">
                             @foreach($item_type->items as $item)
-                            <li class="item" item="{{ $item->id }}"><span>{{ $item->name }}</span></li>
+                            <li class="item" item="{{ $item->id }}">
+                                <span>
+                                    {{ $item->name }}
+                                    @if($item->qty > 1)
+                                        ({{ $item->qty }})
+                                    @endif
+                                </span>
+                            </li>
                             @endforeach
                         </ul>
                         @foreach($item_type->items as $item)
@@ -57,20 +64,53 @@
                                 @default
                                 <div class="item-image"></div>
                             @endswitch
-                            <ul class="item-stats">
-                                @if($item_type->name == "weapons")
-                                <li><span>DPS&nbsp;</span><span>{{ round($item->dmg*$item->fire_rate, 1) }}</span></li>
-                                <li><span>V/W&nbsp;</span><span>{{ round($item->value/$item->weight, 0) }}</span></li>
-                                <li><span>STR&nbsp;</span><span>{{ $item->str_req }}</span></li>
-                                <li><span>DAM&nbsp;</span><span>{{ $item->dmg }}</span></li>
-                                @endif
-                                <li><span>WG&nbsp;</span><span>{{ $item->weight }}</span></li>
-                                <li><span>VAL&nbsp;</span><span>{{ $item->value }}</span></li>
-                                @if($item_type->name == "weapons")
-                                <li><span>CND&nbsp;</span><span>{{ $item->durability }}</span></li>
-                                <li><span>E Cell (32/43)</span></li>
-                                @endif
-                                <li><span></span><span></span></li>
+                            <ul class="item-stats {{ $item_type->name }}">
+                                @switch($item_type->name)
+                                    @case("weapons")
+                                            <li><span>DAM&nbsp;</span><span>{{ $item->dmg }}</span></li>
+                                            <li><span>WG&nbsp;</span><span>{{ $item->weight }}</span></li>
+                                            <li><span>VAL&nbsp;</span><span>{{ $item->value }}</span></li>
+                                            <li><span>CND&nbsp;</span><span>{{ $item->durability }}</span></li>
+                                            <li>
+                                                <span>{{ $item->ammo_type }}</span>
+                                                @foreach($items as $type)
+                                                    @if($type->name == "ammo")
+                                                        @foreach($type->items as $ammo)
+                                                            @if($ammo->name == $item->ammo_type)
+                                                                @if($ammo->qty >= $item->mag_size)
+                                                                    ({{ $item->mag_size }}/{{ $ammo->qty - $item->mag_size }})
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                @endforeach
+                                            </li>
+                                        @break
+                                    @case("apparel")
+                                        <li><span>DT&nbsp;</span><span>{{ $item->dmg_threshold }}</span></li>
+                                        <li><span>WG&nbsp;</span><span>{{ $item->weight }}</span></li>
+                                        <li><span>VAL&nbsp;</span><span>{{ $item->value }}</span></li>
+                                        <li><span>EFFECTS</span><span>{{ $item->effect }}</span></li>
+                                        @break
+                                    @case("aid")
+                                        <li class="filler"></li>
+                                        <li><span>WG&nbsp;</span><span>{{ $item->weight }}</span></li>
+                                        <li><span>VAL&nbsp;</span><span>{{ $item->value }}</span></li>
+                                        <li><span>EFFECTS</span><span>{{ $item->effect }}</span></li>
+                                        @break
+                                    @case("misc")
+                                        <li class="filler"></li>
+                                        <li><span>WG&nbsp;</span><span>{{ $item->weight }}</span></li>
+                                        <li><span>VAL&nbsp;</span><span>{{ $item->value }}</span></li>
+                                        @break
+                                    @case("ammo")
+                                        <li class="filler"></li>
+                                        <li><span>WG&nbsp;</span><span>{{ $item->weight }}</span></li>
+                                        <li><span>VAL&nbsp;</span><span>{{ $item->value }}</span></li>
+                                        <li><span>EFFECTS</span><span>{{ $item->effect }}</span></li>
+                                        @break
+                                    @default
+                                @endswitch
                             </ul>
                         </div>
                         @endforeach

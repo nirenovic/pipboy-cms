@@ -25,9 +25,12 @@
         user-select: none;
         background-color: $pipboy-bg;
 
-        &.blurred
+        &.on
         {
-            filter: blur(4px);
+            .pipboy-screen
+            {
+                animation: power-on 1s linear forwards;
+            }
         }
 
         &::before 
@@ -79,6 +82,24 @@
             width: 100%;
             height: 100%;
             border-bottom: 2px solid $pipboy-fg;
+            opacity: 0;
+            transition: all ease-in 0.2s;
+
+            @keyframes power-on 
+            {
+                0%
+                { opacity: 0; }
+                20% 
+                { opacity: 0.5; }
+                30%
+                { opacity: 0.1; }
+                70%
+                { opacity: 0.8; }
+                90%
+                { opacity: 0.5 }
+                100% 
+                { opacity: 1 }
+            }
 
             .header-bar
             {
@@ -254,14 +275,37 @@
                             padding-top: 8px;
                             height: 50%;
 
+                            &.weapons
+                            {
+                                li:nth-child(5)
+                                {
+                                    grid-column: 2/4;
+                                }
+                            }
+
+                            &.apparel,
+                            &.aid,
+                            &.ammo
+                            {
+                                li:last-child
+                                {
+                                    grid-column: 1/4; 
+                                }
+                            }
+
                             li 
                             {
                                 display: inline-flex;
                                 justify-content: space-between;
                                 border-top: 2px solid $pipboy-fg;
-                                border-right: 2px solid $pipboy-fg;
+                                border-left: 2px solid $pipboy-fg;
                                 padding: 0px 8px;
                                 font-size: 20px;
+
+                                &.filler
+                                {
+                                    border-color: transparent;
+                                }
                             }
                         }
                     }

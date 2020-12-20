@@ -14,11 +14,13 @@ class ItemsAmmoSeeder extends Seeder
     {
         DB::table('items_ammo')->insert([
             [
-                'name' => '.22LR round',
+                'name' => '.44 Magnum round',
+                'qty' => '25',
                 'value' => 1
             ], 
             [
-                'name' => '.308 round',
+                'name' => '.357 Magnum round',
+                'qty' => 84,
                 'value' => 4,
             ],
         ]);

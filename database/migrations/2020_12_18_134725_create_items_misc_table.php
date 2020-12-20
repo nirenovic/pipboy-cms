@@ -16,6 +16,7 @@ class CreateItemsMiscTable extends Migration
         Schema::create('items_misc', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('qty')->unsigned()->default(1);
             $table->integer('weight')->unsigned()->default(0);
             $table->integer('value')->unsigned();
             $table->timestamps();
